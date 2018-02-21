@@ -38,3 +38,23 @@ RETURNING id, createdon;
 
 --DELETE FROM product;
 
+------------------------------------------------------
+-- Aaron Ork
+-- Testing Field
+-- 02/20/2018
+-- Creation of Columns and Insertion of Data(ish)
+------------------------------------------------------
+CREATE TABLE Employee (
+  Record_ID int      NOT NULL,
+  FirstName char(15) NOT NULL,
+  Lastname  char(15) NOT NULL,
+  EMP_ID    int      NOT NULL,
+  Active    char(8),
+  Role      char(30),    -- General Manager, Shift Manager, and Cashier
+  Manager   char(15),    -- Foreign key -> Record ID, Can be empty
+  Password  varchar(8),  -- Do we want to allow special characters??
+  CreatedOn timestamp,   -- Stores year, month, day, hour, minute, and second values
+  PRIMARY KEY (Record_ID)
+  CONSTRAINT fk_Manager FOREIGN KEY (Manager) REFERENCES Record_ID -- Not sure if this is correct or not
+  -- I named the constraint just to make it easier to debug if we have to
+);
